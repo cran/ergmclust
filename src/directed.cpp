@@ -62,9 +62,9 @@ arma::cube gamma_update_HMM_stat_dir(arma::mat gamma, arma::vec pi, arma::mat th
             float exp_val_2_mod=exp(theta(l,0)-alpha_max);
             float exp_val_3_mod=exp(theta(k,1)+theta(l,1)-alpha_max);
             float log_exp_val=alpha_max+log(exp(-alpha_max)+exp_val_1_mod+exp_val_2_mod+exp_val_3_mod);
-            int indicator_10=(network(i,j)==1)&(network(j,i)==0);
-            int indicator_01=(network(i,j)==0)&(network(j,i)==1);
-            int indicator_11=(network(i,j)==1)&(network(j,i)==1);
+            int indicator_10=(network(i,j)==1)&&(network(j,i)==0);
+            int indicator_01=(network(i,j)==0)&&(network(j,i)==1);
+            int indicator_11=(network(i,j)==1)&&(network(j,i)==1);
             t1+=((gamma(j,l)/(2*gamma(i,k)))*((indicator_10*theta(k,0))+(indicator_01*theta(l,0))+((indicator_11)*(theta(k,1)+theta(l,1)))-log_exp_val));
           }
         }
@@ -93,8 +93,8 @@ arma::vec grad_HMM_stat_dir_oe(arma::mat theta, arma::mat gamma, arma::mat netwo
           float exp_val_1=exp(theta(k,0));
           float exp_val_2=exp(theta(l,0));
           float exp_val_3=exp(theta(k,1)+theta(l,1));
-          int indicator_10=(network(i,j)==1)&(network(j,i)==0);
-          int indicator_01=(network(i,j)==0)&(network(j,i)==1);
+          int indicator_10=(network(i,j)==1)&&(network(j,i)==0);
+          int indicator_01=(network(i,j)==0)&&(network(j,i)==1);
           grad_mat_1(k,l)=gamma(i,k)*gamma(j,l)*(indicator_10-(exp_val_1/(1+exp_val_1+exp_val_2+exp_val_3)));
           grad_mat_2(k,l)=gamma(i,k)*gamma(j,l)*(indicator_01-(exp_val_2/(1+exp_val_1+exp_val_2+exp_val_3)));
         }
@@ -118,7 +118,7 @@ arma::vec grad_HMM_stat_dir_re(arma::mat theta, arma::mat gamma, arma::mat netwo
           float exp_val_1=exp(theta(k,0));
           float exp_val_2=exp(theta(l,0));
           float exp_val_3=exp(theta(k,1)+theta(l,1));
-          int indicator_11=(network(i,j)==1)&(network(j,i)==1);
+          int indicator_11=(network(i,j)==1)&&(network(j,i)==1);
           grad_mat(k,l)=gamma(i,k)*gamma(j,l)*(indicator_11-(exp_val_3/(1+exp_val_1+exp_val_2+exp_val_3)));
         }
       }
@@ -253,9 +253,9 @@ float ELBO_conv_HMM_stat_dir(arma::mat gamma, arma::vec alpha, arma::mat theta, 
           float exp_val_1=exp(theta(k,0));
           float exp_val_2=exp(theta(l,0));
           float exp_val_3=exp(theta(k,1)+theta(l,1));
-          int indicator_10=(network(i,j)==1)&(network(j,i)==0);
-          int indicator_01=(network(i,j)==0)&(network(j,i)==1);
-          int indicator_11=(network(i,j)==1)&(network(j,i)==1);
+          int indicator_10=(network(i,j)==1)&&(network(j,i)==0);
+          int indicator_01=(network(i,j)==0)&&(network(j,i)==1);
+          int indicator_11=(network(i,j)==1)&&(network(j,i)==1);
           t1+=(gamma(i,k)*gamma(j,l)*((indicator_10*theta(k,0))+(indicator_01*theta(l,0))+(indicator_11*(theta(k,1)+theta(l,1)))-log(1+exp_val_1+exp_val_2+exp_val_3)));
         }
       }
@@ -266,7 +266,7 @@ float ELBO_conv_HMM_stat_dir(arma::mat gamma, arma::vec alpha, arma::mat theta, 
   float t2=0;
   for(int i = 0; i < N; i++){
     for(int k = 0; k < K; k++){
-      if((alpha(k)>=(pow(10,(-100))))&(gamma(i,k)>=(pow(10,(-100))))){
+      if((alpha(k)>=(pow(10,(-100))))&&(gamma(i,k)>=(pow(10,(-100))))){
         t2+=gamma(i,k)*(log(alpha(k))-log(gamma(i,k)));
       }
     }
@@ -288,8 +288,8 @@ float grad_HMM_stat_dir_oe_K1(arma::vec theta, arma::mat network, int N){
   float grad_val_oe=0;
   for(int i = 0; i < (N-1); i++){
     for(int j = i+1; j < N; j++){
-      int indicator_10=(network(i,j)==1)&(network(j,i)==0);
-      int indicator_01=(network(i,j)==0)&(network(j,i)==1);
+      int indicator_10=(network(i,j)==1)&&(network(j,i)==0);
+      int indicator_01=(network(i,j)==0)&&(network(j,i)==1);
       grad_val_oe+=((indicator_10+indicator_01)-exp_val_ratio);
     }
   }
@@ -304,7 +304,7 @@ float grad_HMM_stat_dir_re_K1(arma::vec theta, arma::mat network, int N){
   float grad_val_re=0;
   for(int i = 0; i < (N-1); i++){
     for(int j = i+1; j < N; j++){
-      int indicator_11=(network(i,j)==1)&(network(j,i)==1);
+      int indicator_11=(network(i,j)==1)&&(network(j,i)==1);
       grad_val_re+=((2*indicator_11)-exp_val_ratio);
     }
   }
@@ -364,9 +364,9 @@ float ELBO_conv_HMM_stat_dir_K1(arma::vec theta, arma::mat network, int N){
   float ELBO_val=0;
   for(int i = 0; i < (N-1); i++){
     for(int j = i+1; j < N; j++){
-      int indicator_10=(network(i,j)==1)&(network(j,i)==0);
-      int indicator_01=(network(i,j)==0)&(network(j,i)==1);
-      int indicator_11=(network(i,j)==1)&(network(j,i)==1);
+      int indicator_10=(network(i,j)==1)&&(network(j,i)==0);
+      int indicator_01=(network(i,j)==0)&&(network(j,i)==1);
+      int indicator_11=(network(i,j)==1)&&(network(j,i)==1);
       ELBO_val+=((indicator_10*theta(0))+(indicator_01*theta(0))+(indicator_11*(2*theta(1)))-log_exp_val);
     }
   }

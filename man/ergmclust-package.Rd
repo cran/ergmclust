@@ -11,14 +11,13 @@ Clustering and estimation of parameters in ERGMs for static undirected and direc
 The ergmclust package is an R implementation that serves as an estimation framework for static binary networks, in both undirected and directed cases. Its main functions include ergmclust for clustering and parameter estimation, ergmclust.ICL for model selection, and ergmclust.plot for visualizing the clustered network. The package is based on VEM algorithm (Vu et. al., 2013) and works well with both simulated and real-world data.
 }
 \author{
-Authors: Amal Agarwal [aut, cre], Kevin Lee [aut], Lingzhou Xue [aut, cre], Anna Yinqi Zhang [cre]
+Authors: Amal Agarwal [aut], Kevin Lee [aut], Lingzhou Xue [aut, ths, cre], Anna Yinqi Zhang [cre]
 
-Maintainer: Amal Agarwal <amalag.19@gmail.com>
+Maintainer: Lingzhou Xue <lzxue@psu.edu>
 }
 \references{
 Agarwal, A. and Xue, L. (2019) \emph{Model-Based Clustering of Nonparametric Weighted Networks With Application to Water Pollution Analysis}, Technometrics, to appear
-
-\url{https://amstat.tandfonline.com/doi/abs/10.1080/00401706.2019.1623076}
+\doi{doi:10.1080/00401706.2019.1623076}
 
 Biernacki, C., Celeux, G., and Govaert, G. (2000) \emph{Assessing a mixture model for clustering with the integrated completed likelihood}, IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol. 22(7), 719-725
 

@@ -4,7 +4,7 @@
 C++ function for updating the gradient function in a static binary undirected network.
 }
 \description{
-The C++ function grad_HMM_stat_undir() updates the gradient function when the number of cluster is 1 in a static binary undirected network.
+The C++ function grad_HMM_stat_undir() updates the gradient function when the number of clusters is 1 in a static binary undirected network.
 }
 \usage{
 grad_HMM_stat_undir_K1(theta, network, N)

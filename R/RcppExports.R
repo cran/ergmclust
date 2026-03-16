@@ -61,6 +61,50 @@ ELBO_conv_HMM_stat_dir_K1 <- function(theta, network, N) {
     .Call('_ergmclust_ELBO_conv_HMM_stat_dir_K1', PACKAGE = 'ergmclust', theta, network, N)
 }
 
+rowsum_Mat_new <- function(M) {
+    .Call('_ergmclust_rowsum_Mat_new', PACKAGE = 'ergmclust', M)
+}
+
+colsum_Mat_new <- function(M) {
+    .Call('_ergmclust_colsum_Mat_new', PACKAGE = 'ergmclust', M)
+}
+
+epan <- function(input) {
+    .Call('_ergmclust_epan', PACKAGE = 'ergmclust', input)
+}
+
+gamma_update_weighted_stat_undir <- function(gamma, pi, theta, block_dens_mat, adjmat, N, K) {
+    .Call('_ergmclust_gamma_update_weighted_stat_undir', PACKAGE = 'ergmclust', gamma, pi, theta, block_dens_mat, adjmat, N, K)
+}
+
+grad_theta_weighted_stat_undir <- function(theta, gamma, adjmat, N, K) {
+    .Call('_ergmclust_grad_theta_weighted_stat_undir', PACKAGE = 'ergmclust', theta, gamma, adjmat, N, K)
+}
+
+hess_theta_weighted_stat_undir <- function(theta, gamma, N, K) {
+    .Call('_ergmclust_hess_theta_weighted_stat_undir', PACKAGE = 'ergmclust', theta, gamma, N, K)
+}
+
+tie_clust_partition <- function(clust_est, adjmat, wtmat, N, K) {
+    .Call('_ergmclust_tie_clust_partition', PACKAGE = 'ergmclust', clust_est, adjmat, wtmat, N, K)
+}
+
+ELBO_conv_weighted_stat_undir <- function(gamma, pi, theta, block_dens_mat, adjmat, N, K) {
+    .Call('_ergmclust_ELBO_conv_weighted_stat_undir', PACKAGE = 'ergmclust', gamma, pi, theta, block_dens_mat, adjmat, N, K)
+}
+
+grad_theta_weighted_stat_undir_K1 <- function(theta, adjmat, N) {
+    .Call('_ergmclust_grad_theta_weighted_stat_undir_K1', PACKAGE = 'ergmclust', theta, adjmat, N)
+}
+
+hess_theta_weighted_stat_undir_K1 <- function(theta, N) {
+    .Call('_ergmclust_hess_theta_weighted_stat_undir_K1', PACKAGE = 'ergmclust', theta, N)
+}
+
+ELBO_conv_weighted_stat_undir_K1 <- function(theta, block_dens_mat, adjmat, N) {
+    .Call('_ergmclust_ELBO_conv_weighted_stat_undir_K1', PACKAGE = 'ergmclust', theta, block_dens_mat, adjmat, N)
+}
+
 rowsum_Mat <- function(M) {
     .Call('_ergmclust_rowsum_Mat', PACKAGE = 'ergmclust', M)
 }

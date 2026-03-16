@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // rowsum_dir_Mat
 arma::vec rowsum_dir_Mat(arma::mat M);
 RcppExport SEXP _ergmclust_rowsum_dir_Mat(SEXP MSEXP) {
@@ -207,6 +212,156 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// rowsum_Mat_new
+arma::vec rowsum_Mat_new(arma::mat M);
+RcppExport SEXP _ergmclust_rowsum_Mat_new(SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(rowsum_Mat_new(M));
+    return rcpp_result_gen;
+END_RCPP
+}
+// colsum_Mat_new
+arma::vec colsum_Mat_new(arma::mat M);
+RcppExport SEXP _ergmclust_colsum_Mat_new(SEXP MSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type M(MSEXP);
+    rcpp_result_gen = Rcpp::wrap(colsum_Mat_new(M));
+    return rcpp_result_gen;
+END_RCPP
+}
+// epan
+float epan(float input);
+RcppExport SEXP _ergmclust_epan(SEXP inputSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< float >::type input(inputSEXP);
+    rcpp_result_gen = Rcpp::wrap(epan(input));
+    return rcpp_result_gen;
+END_RCPP
+}
+// gamma_update_weighted_stat_undir
+arma::cube gamma_update_weighted_stat_undir(arma::mat gamma, arma::vec pi, arma::vec theta, arma::mat block_dens_mat, arma::mat adjmat, int N, int K);
+RcppExport SEXP _ergmclust_gamma_update_weighted_stat_undir(SEXP gammaSEXP, SEXP piSEXP, SEXP thetaSEXP, SEXP block_dens_matSEXP, SEXP adjmatSEXP, SEXP NSEXP, SEXP KSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type gamma(gammaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type pi(piSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type block_dens_mat(block_dens_matSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type adjmat(adjmatSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    rcpp_result_gen = Rcpp::wrap(gamma_update_weighted_stat_undir(gamma, pi, theta, block_dens_mat, adjmat, N, K));
+    return rcpp_result_gen;
+END_RCPP
+}
+// grad_theta_weighted_stat_undir
+arma::mat grad_theta_weighted_stat_undir(arma::vec theta, arma::mat gamma, arma::mat adjmat, int N, int K);
+RcppExport SEXP _ergmclust_grad_theta_weighted_stat_undir(SEXP thetaSEXP, SEXP gammaSEXP, SEXP adjmatSEXP, SEXP NSEXP, SEXP KSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type gamma(gammaSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type adjmat(adjmatSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    rcpp_result_gen = Rcpp::wrap(grad_theta_weighted_stat_undir(theta, gamma, adjmat, N, K));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hess_theta_weighted_stat_undir
+arma::mat hess_theta_weighted_stat_undir(arma::vec theta, arma::mat gamma, int N, int K);
+RcppExport SEXP _ergmclust_hess_theta_weighted_stat_undir(SEXP thetaSEXP, SEXP gammaSEXP, SEXP NSEXP, SEXP KSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type gamma(gammaSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    rcpp_result_gen = Rcpp::wrap(hess_theta_weighted_stat_undir(theta, gamma, N, K));
+    return rcpp_result_gen;
+END_RCPP
+}
+// tie_clust_partition
+arma::field<arma::mat> tie_clust_partition(arma::vec clust_est, arma::mat adjmat, arma::mat wtmat, int N, int K);
+RcppExport SEXP _ergmclust_tie_clust_partition(SEXP clust_estSEXP, SEXP adjmatSEXP, SEXP wtmatSEXP, SEXP NSEXP, SEXP KSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type clust_est(clust_estSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type adjmat(adjmatSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type wtmat(wtmatSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    rcpp_result_gen = Rcpp::wrap(tie_clust_partition(clust_est, adjmat, wtmat, N, K));
+    return rcpp_result_gen;
+END_RCPP
+}
+// ELBO_conv_weighted_stat_undir
+float ELBO_conv_weighted_stat_undir(arma::mat gamma, arma::vec pi, arma::vec theta, arma::mat block_dens_mat, arma::mat adjmat, int N, int K);
+RcppExport SEXP _ergmclust_ELBO_conv_weighted_stat_undir(SEXP gammaSEXP, SEXP piSEXP, SEXP thetaSEXP, SEXP block_dens_matSEXP, SEXP adjmatSEXP, SEXP NSEXP, SEXP KSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat >::type gamma(gammaSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type pi(piSEXP);
+    Rcpp::traits::input_parameter< arma::vec >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type block_dens_mat(block_dens_matSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type adjmat(adjmatSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    Rcpp::traits::input_parameter< int >::type K(KSEXP);
+    rcpp_result_gen = Rcpp::wrap(ELBO_conv_weighted_stat_undir(gamma, pi, theta, block_dens_mat, adjmat, N, K));
+    return rcpp_result_gen;
+END_RCPP
+}
+// grad_theta_weighted_stat_undir_K1
+float grad_theta_weighted_stat_undir_K1(float theta, arma::mat adjmat, int N);
+RcppExport SEXP _ergmclust_grad_theta_weighted_stat_undir_K1(SEXP thetaSEXP, SEXP adjmatSEXP, SEXP NSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< float >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type adjmat(adjmatSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    rcpp_result_gen = Rcpp::wrap(grad_theta_weighted_stat_undir_K1(theta, adjmat, N));
+    return rcpp_result_gen;
+END_RCPP
+}
+// hess_theta_weighted_stat_undir_K1
+float hess_theta_weighted_stat_undir_K1(float theta, int N);
+RcppExport SEXP _ergmclust_hess_theta_weighted_stat_undir_K1(SEXP thetaSEXP, SEXP NSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< float >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    rcpp_result_gen = Rcpp::wrap(hess_theta_weighted_stat_undir_K1(theta, N));
+    return rcpp_result_gen;
+END_RCPP
+}
+// ELBO_conv_weighted_stat_undir_K1
+float ELBO_conv_weighted_stat_undir_K1(float theta, arma::mat block_dens_mat, arma::mat adjmat, int N);
+RcppExport SEXP _ergmclust_ELBO_conv_weighted_stat_undir_K1(SEXP thetaSEXP, SEXP block_dens_matSEXP, SEXP adjmatSEXP, SEXP NSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< float >::type theta(thetaSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type block_dens_mat(block_dens_matSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type adjmat(adjmatSEXP);
+    Rcpp::traits::input_parameter< int >::type N(NSEXP);
+    rcpp_result_gen = Rcpp::wrap(ELBO_conv_weighted_stat_undir_K1(theta, block_dens_mat, adjmat, N));
+    return rcpp_result_gen;
+END_RCPP
+}
 // rowsum_Mat
 arma::vec rowsum_Mat(arma::mat M);
 RcppExport SEXP _ergmclust_rowsum_Mat(SEXP MSEXP) {
@@ -345,6 +500,17 @@ static const R_CallMethodDef CallEntries[] = {
     {"_ergmclust_hess_HMM_stat_dir_re_K1", (DL_FUNC) &_ergmclust_hess_HMM_stat_dir_re_K1, 2},
     {"_ergmclust_hess_HMM_stat_dir_oe_re_K1", (DL_FUNC) &_ergmclust_hess_HMM_stat_dir_oe_re_K1, 2},
     {"_ergmclust_ELBO_conv_HMM_stat_dir_K1", (DL_FUNC) &_ergmclust_ELBO_conv_HMM_stat_dir_K1, 3},
+    {"_ergmclust_rowsum_Mat_new", (DL_FUNC) &_ergmclust_rowsum_Mat_new, 1},
+    {"_ergmclust_colsum_Mat_new", (DL_FUNC) &_ergmclust_colsum_Mat_new, 1},
+    {"_ergmclust_epan", (DL_FUNC) &_ergmclust_epan, 1},
+    {"_ergmclust_gamma_update_weighted_stat_undir", (DL_FUNC) &_ergmclust_gamma_update_weighted_stat_undir, 7},
+    {"_ergmclust_grad_theta_weighted_stat_undir", (DL_FUNC) &_ergmclust_grad_theta_weighted_stat_undir, 5},
+    {"_ergmclust_hess_theta_weighted_stat_undir", (DL_FUNC) &_ergmclust_hess_theta_weighted_stat_undir, 4},
+    {"_ergmclust_tie_clust_partition", (DL_FUNC) &_ergmclust_tie_clust_partition, 5},
+    {"_ergmclust_ELBO_conv_weighted_stat_undir", (DL_FUNC) &_ergmclust_ELBO_conv_weighted_stat_undir, 7},
+    {"_ergmclust_grad_theta_weighted_stat_undir_K1", (DL_FUNC) &_ergmclust_grad_theta_weighted_stat_undir_K1, 3},
+    {"_ergmclust_hess_theta_weighted_stat_undir_K1", (DL_FUNC) &_ergmclust_hess_theta_weighted_stat_undir_K1, 2},
+    {"_ergmclust_ELBO_conv_weighted_stat_undir_K1", (DL_FUNC) &_ergmclust_ELBO_conv_weighted_stat_undir_K1, 4},
     {"_ergmclust_rowsum_Mat", (DL_FUNC) &_ergmclust_rowsum_Mat, 1},
     {"_ergmclust_colsum_Mat", (DL_FUNC) &_ergmclust_colsum_Mat, 1},
     {"_ergmclust_gamma_update_HMM_stat_undir", (DL_FUNC) &_ergmclust_gamma_update_HMM_stat_undir, 6},

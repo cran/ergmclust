@@ -7,7 +7,7 @@ An estimation framework for static binary directed networks.
 The inner wrapper function wrapper_HMM_stat_dir_Dens() is an estimation framework for binary static directed network based on variational Expectation-Maximization algorithm.
 }
 \usage{
-wrapper_HMM_stat_dir_Dens(adjmat, K, thresh, iter.max, theta_init)
+wrapper_HMM_stat_dir_Dens(adjmat, K, thresh, iter.max, coef.init)
 }
 \arguments{
   \item{adjmat}{
@@ -22,7 +22,7 @@ wrapper_HMM_stat_dir_Dens(adjmat, K, thresh, iter.max, theta_init)
   \item{iter.max}{
   The maximum number of iterations after which the algorithm is terminated. The default value is set as 200.
   }
-  \item{theta_init}{
+  \item{coef.init}{
   The initial value of the density, stability, transitivity parameters for which clustering is desired, the default being 1e-1.
 }
 }

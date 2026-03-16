@@ -7,22 +7,23 @@ An estimation framework for static binary undirected networks.
 The inner wrapper function wrapper_HMM_stat_undir_Dens() is an estimation framework for binary static undirected network based on variational Expectation-Maximization algorithm.
 }
 \usage{
-wrapper_HMM_stat_undir_Dens(adjmat, K, thresh, iter.max, theta_init)
+wrapper_HMM_stat_undir_Dens(adjmat, K, thresh, iter.max, coef.init)
 }
 \arguments{
   \item{adjmat}{
   Array of the network adjacency matrices.
-}
+  }
   \item{K}{
-  Number of clusers for which the estimation must be performed.
-}
+  Number of clusters for which the estimation must be performed.
+  }
   \item{thresh}{
   Convergence threshold for estimation, the default being 1e-6.
-}
-  \item{iter.max}{The maximum number of iterations after which the algorithm is terminated. The default value is set as 200.}
-  \item{theta_init}{
+  }
+  \item{iter.max}{The maximum number of iterations after which the algorithm is terminated. The default value is set as 200.
+  }
+  \item{coef.init}{
   The initial value of the density, stability, transitivity parameters for which clustering is desired, the default being 1e-1.
-}
+  }
 }
 \value{
 Returns a list of \code{ergmclust} object. Each object of class \code{ergmclust} is a \code{list} with the following components:

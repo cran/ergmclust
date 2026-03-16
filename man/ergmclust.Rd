@@ -7,28 +7,36 @@ Model-Based Clustering of Large Networks Through ERGMs.
 Model-based clustering and cluster-specific parameter estimation through the mixed membership Exponential-Family Random Graph Models (ERGMs) using Variational Expectation-Maximization  algorithm.
 }
 \usage{
-ergmclust(adjmat, K, directed = FALSE, thresh = 1e-06, iter.max = 200, coef.init = NULL)
+ergmclust(adjmat, K, directed = FALSE, weighted = FALSE, thresh = 1e-06, 
+iter.max = 200, coef.init = NULL, wtmat = NULL)
 }
 \arguments{
   \item{adjmat}{
   An object of class matrix of dimension (N x N) containing the adjacency matrix, where N is the number of nodes in the network.
-}
+  }
   \item{K}{
   Number of clusters in the mixed membership Exponential-Family Random Graph Models (ERGMs).
-}
+  }
   \item{directed}{
   If \code{TRUE}, the network is supposed to be directed (and therefore adjmat is must be asymmetric in general). By default, this is set as \code{FALSE}.
-}
+  }
+  \item{weighted}{
+  If \code{TRUE}, the network is supposed to be weighted. By default, this is set as \code{FALSE}.
+  }
   \item{thresh}{
   Optional user-supplied convergence threshold for relative error in the objective in Variational Expectation-Maximization (VEM) algorithm. The default value is set as 1e-06. 
-}
+  }
   \item{iter.max}{
   The maximum number of iterations after which the algorithm is terminated. The default value is set as 200.
   }
   \item{coef.init}{
-  Optional user-supplied network canonical parameter vector (K-dimensional). Default is \code{NULL} and ergmclust chooses a random perturbation around zero vector.
+  ergmclust chooses the default value as a random perturbation around K-dim zero vector; default is \code{NULL}.
+  }
+  \item{wtmat}{
+  An object of class matrix of dimension (N x N) containing the weight matrix, where N is the number of nodes in the network; default is \code{NULL}.
+  }
 }
-}
+
 \details{
 ergmclust is an R implementation for the model-based clustering through the mixed membership Exponential-Family Random Graph Models (ERGMs) with undirected and directed network data. It uses the Variational Expectation-Maximization algorithm to solve the approximate maximum likelihood estimation. 
 }
@@ -41,8 +49,7 @@ Returns a list of \code{ergmclust} object. Each object of class \code{ergmclust}
 }
 \references{
 Agarwal, A. and Xue, L. (2019) \emph{Model-Based Clustering of Nonparametric Weighted Networks With Application to Water Pollution Analysis}, Technometrics, to appear
-
-\url{https://amstat.tandfonline.com/doi/abs/10.1080/00401706.2019.1623076}
+\doi{10.1080/00401706.2019.1623076}
 
 Blei, D. M. , Kucukelbir, A., and McAuliffe, J. D. (2017), \emph{Variational Inference: A Review for Statisticians}, Journal of the American Statistical Association, Vol. 112(518), 859-877
 
@@ -57,9 +64,9 @@ Vu D. Q., Hunter, D. R., and Schweinberger, M. (2013) \emph{Model-based Clusteri
 \url{https://projecteuclid.org/euclid.aoas/1372338477}
 }
 \author{
-Authors: Amal Agarwal [aut, cre], David R. Hunter [aut], Kevin Lee [aut], Lingzhou Xue [aut, cre], Anna Yinqi Zhang [cre]
+Authors: Amal Agarwal [aut], Kevin Lee [aut], Lingzhou Xue [aut, ths, cre], Anna Yinqi Zhang [cre]
 
-Maintainer:  Amal Agarwal <amalag.19@gmail.com>
+Maintainer: Lingzhou Xue <lzxue@psu.edu>
 }
 \examples{
 ## undirected network:

@@ -138,7 +138,7 @@ float ELBO_conv_HMM_stat_undir(arma::mat gamma, arma::vec pi, arma::vec theta, a
   float t2=0;
   for(int i = 0; i < N; i++){
     for(int k = 0; k < K; k++){
-      if((pi(k)>=(pow(10,(-100))))&(gamma(i,k)>=(pow(10,(-100))))){
+      if((pi(k)>=(pow(10,(-100))))&&(gamma(i,k)>=(pow(10,(-100))))){
         t2+=gamma(i,k)*(log(pi(k))-log(gamma(i,k)));
       }
     }

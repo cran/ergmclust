@@ -1,13 +1,13 @@
-\name{hess_HMM_stat_undir}
-\alias{hess_HMM_stat_undir}
+\name{hess_theta_weighted_stat_undir}
+\alias{hess_theta_weighted_stat_undir}
 \title{
-C++ function for updating the Hessian matrix in a static binary undirected network.
+C++ function for updating the Hessian matrix in a weighted static binary undirected network.
 }
 \description{
-The C++ function hess_HMM_stat_undir() updates the Hessian matrix when the number of clusters is greater than or equal to 2 in a static binary undirected network.
+The C++ function hess_theta_weighted_stat_undir() updates the Hessian matrix when the number of clusters is greater than or equal to 2 in a weighted static binary undirected network.
 }
 \usage{
-hess_HMM_stat_undir(theta, gamma, N, K)
+hess_theta_weighted_stat_undir(theta, gamma, N, K)
 }
 \arguments{
   \item{theta}{

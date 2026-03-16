@@ -27,7 +27,7 @@ iter.max = 200, coef.init = NULL, node.labels = NULL)
   The maximum number of iterations after which the algorithm is terminated. The default value is set as 200.
 }
   \item{coef.init}{
-  Optional user-supplied network canonical parameter vector (K-dimensional); default is \code{NULL}, and ergmclust chooses a random perturbation around zero vector.
+  ergmclust chooses the default value as a random perturbation around K-dim zero vector; default is \code{NULL}.
 }
   \item{node.labels}{
   Optional user-supplied network node names character vector (N-dimensional); default is \code{NULL}.
@@ -45,9 +45,9 @@ Vu D. Q., Hunter, D. R., and Schweinberger, M. (2013) \emph{Model-based Clusteri
 \url{https://projecteuclid.org/euclid.aoas/1372338477}
 }
 \author{
-Authors: Amal Agarwal [aut, cre], Kevin Lee [aut], Lingzhou Xue [aut, cre], Anna Yinqi Zhang [cre]
+Authors: Amal Agarwal [aut], Kevin Lee [aut], Lingzhou Xue [aut, ths, cre], Anna Yinqi Zhang [cre]
 
-Maintainer: Amal Agarwal <amalag.19@gmail.com>
+Maintainer: Lingzhou Xue <lzxue@psu.edu>
 }
 \examples{
 ## undirected network:
